@@ -1,3 +1,4 @@
+@font-face{font-family:Manrope;src:url('@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2') format('woff2');font-weight:200 800;font-style:normal;font-display:swap}
 .openly-intro{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:#faf9f6;color:#302e2b;opacity:1;transition:opacity 220ms ease;pointer-events:none}
 .openly-intro.leaving{opacity:0}
 .openly-intro-content{display:flex;align-items:center;gap:18px;max-width:calc(100vw - 48px)}

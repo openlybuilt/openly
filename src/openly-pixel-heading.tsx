@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 
 /** Reveal accessible text through a temporary pixelated canvas. */
-export function PixelHeading({ text, onRevealed, onFinished, enabled = true, delay = 2500, as = 'h1' }: { text: string; onRevealed?: () => void; onFinished?: () => void; enabled?: boolean; delay?: number; as?: 'h1' | 'p' }) {
+export function PixelHeading({ text, onRevealed, onFinished, enabled = true, delay = 1200, as = 'h1' }: { text: string; onRevealed?: () => void; onFinished?: () => void; enabled?: boolean; delay?: number; as?: 'h1' | 'p' }) {
   const heading = useRef<HTMLHeadingElement | HTMLParagraphElement | null>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
@@ -11,7 +11,8 @@ export function PixelHeading({ text, onRevealed, onFinished, enabled = true, del
     if (motion.matches) { delete node.dataset.revealing; onRevealed?.(); onFinished?.(); return; }
     let frame = 0, timer = 0, cancelled = false;
     const start = async () => {
-      await document.fonts.ready;
+      // A slow font must not leave the heading hidden indefinitely.
+      await Promise.race([document.fonts.ready, new Promise<void>(resolve => window.setTimeout(resolve, 500))]);
       if (cancelled) return;
       const rect = node.getBoundingClientRect(), style = getComputedStyle(node);
       const width = Math.max(1, Math.ceil(rect.width)), height = Math.max(1, Math.ceil(rect.height));

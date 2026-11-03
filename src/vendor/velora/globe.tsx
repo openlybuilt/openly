@@ -247,6 +247,11 @@ export function Globe({
     const moving = () => drag || Math.abs(v.vx) + Math.abs(v.vy) > 0.01;
     const frame = (now: number) => {
       raf = 0;
+      // The slow rotation does not need a full-rate canvas redraw.
+      if (last && now - last < 1000 / 30) {
+        if (inView && !document.hidden) raf = requestAnimationFrame(frame);
+        return;
+      }
       const dt = last ? Math.min(0.05, (now - last) / 1000) : 0;
       if (!drag) {
         if (targetRef.current) {
@@ -277,7 +282,7 @@ export function Globe({
     kickRef.current = kick;
 
     const resize = () => {
-      const dpr = Math.min(devicePixelRatio || 1, 2);
+      const dpr = Math.min(devicePixelRatio || 1, 1.5);
       w = root.clientWidth;
       h = root.clientHeight;
       R = Math.min(w, h) * Math.max(0.1, Math.min(radiusScale, 0.49));

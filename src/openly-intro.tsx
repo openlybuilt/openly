@@ -1,4 +1,3 @@
-import '@fontsource-variable/manrope';
 import { useCallback, useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Orb, StreamingText } from '@aicss/react';
@@ -20,7 +19,7 @@ function Intro() {
   const [leaving, setLeaving] = useState(false);
   useEffect(() => {
     if (!visible) return;
-    const timer = window.setTimeout(() => setLeaving(true), 2300);
+    const timer = window.setTimeout(() => setLeaving(true), 1100);
     return () => window.clearTimeout(timer);
   }, [visible]);
   useEffect(() => {
@@ -35,7 +34,12 @@ function Intro() {
 }
 
 const root = document.getElementById('openly-intro-root');
-if (root) createRoot(root).render(<><Intro/><ScrollGlobe/></>);
+if (root) {
+  createRoot(root).render(<Intro/>);
+  const scrollRoot = document.createElement('div');
+  root.after(scrollRoot);
+  createRoot(scrollRoot).render(<ScrollGlobe/>);
+}
 
 function ScrollGlobe() {
   useEffect(() => {
@@ -81,7 +85,13 @@ function ScrollGlobe() {
         return;
       }
       const distance = Math.max(1, storyElement.offsetHeight - frameElement.offsetHeight);
-      const progress = Math.min(1, Math.max(0, -storyElement.getBoundingClientRect().top / distance));
+      const storyRect = storyElement.getBoundingClientRect();
+      const frameHeight = frameElement.offsetHeight;
+      const section = initiatives?.querySelector<HTMLElement>('.initiatives');
+      const content = initiatives?.querySelector<HTMLElement>('.initiatives-inner');
+      const sectionHeight = section?.offsetHeight ?? 0;
+      const initiativesHeight = initiatives?.offsetHeight ?? 0;
+      const progress = Math.min(1, Math.max(0, -storyRect.top / distance));
       if (designPage) globeElement.style.transform = `scale(${1 - progress * .58})`;
       else {
         const arrival = Math.min(1, progress / .38);
@@ -95,28 +105,26 @@ function ScrollGlobe() {
         globeElement.style.display = fade >= 1 ? 'none' : '';
         if (initiatives) {
           const reveal = Math.min(1, Math.max(0, (progress - .91) / .09));
-          const remaining = Math.max(0, storyElement.getBoundingClientRect().bottom - frameElement.offsetHeight);
+          const remaining = Math.max(0, storyRect.bottom - frameHeight);
           initiatives.style.transform = progress > .9 && remaining > 1 ? `translateY(${-remaining}px)` : '';
           initiatives.style.opacity = String(reveal);
           initiatives.style.pointerEvents = reveal >= .95 ? 'auto' : 'none';
           initiatives.inert = reveal < .95;
           initiatives.dataset.reveal = progress >= .92 ? 'entered' : 'waiting';
-          const section = initiatives.querySelector<HTMLElement>('.initiatives');
-          const content = initiatives.querySelector<HTMLElement>('.initiatives-inner');
           if (section && content && contact) {
-            const height = frameElement.offsetHeight;
-            const overhang = Math.max(0, section.offsetHeight - height);
+            const height = frameHeight;
+            const overhang = Math.max(0, sectionHeight - height);
             initiatives.style.setProperty('--initiative-sticky-top', `${-overhang}px`);
             // Use the untransformed layout position so moving the two scenes cannot change their own scroll progress.
-            const initiativesTop = storyElement.getBoundingClientRect().bottom - height;
-            const travel = Math.max(1, initiatives.offsetHeight - section.offsetHeight);
+            const initiativesTop = storyRect.bottom - height;
+            const travel = Math.max(1, initiativesHeight - sectionHeight);
             const exit = Math.min(1, Math.max(0, (-initiativesTop - overhang) / travel));
             content.style.transform = `scale(${1 - exit * .35})`;
             content.style.opacity = String(Math.max(0, 1 - exit / .75));
             initiatives.inert = reveal < .95 || exit >= .75;
             if (exit >= .75) initiatives.style.pointerEvents = 'none';
             const contactReveal = Math.min(1, Math.max(0, (exit - .2) / .8));
-            const distanceLeft = Math.max(0, initiativesTop + initiatives.offsetHeight - height);
+            const distanceLeft = Math.max(0, initiativesTop + initiativesHeight - height);
             contact.style.transform = exit > .2 && distanceLeft > 1 ? `translateY(${-distanceLeft}px)` : '';
             contact.style.opacity = String(contactReveal);
             const contactContent = contact.querySelector<HTMLElement>('.contact-content');
