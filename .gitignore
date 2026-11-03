@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.originkit/
+.env
+.env.*
+!.env.example
+preferences.json
+requests.json
+*.tmp
