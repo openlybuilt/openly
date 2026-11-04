@@ -12,10 +12,9 @@
 .openly-globe-canvas{position:absolute;inset:0;width:100%;height:100%}
 header.wrap:has(.landing-nav){width:calc(100% - 48px)}
 .nav.landing-nav{justify-content:center;position:relative}
-.landing-nav .landing-logo{position:absolute;left:0;top:50%;transform:translateY(-50%);display:block;line-height:0}
-.landing-logo img{display:block;width:44px;height:44px}
+.nav.landing-nav .landing-logo{position:absolute;left:0;top:50%;transform:translateY(-50%);display:block;font-size:17px;line-height:1.2}
 .landing-links{display:flex;align-items:center;gap:28px}.landing-socials{position:absolute;right:0;top:50%;transform:translateY(-50%)}
-@media(max-width:480px){.nav.landing-nav{display:grid;grid-template-columns:38px minmax(0,1fr) 70px;gap:0}.landing-nav .landing-logo,.landing-socials{position:static;transform:none}.landing-logo img{width:38px;height:38px}.landing-links{justify-content:center;gap:7px}}
+@media(max-width:480px){.nav.landing-nav{display:grid;grid-template-columns:64px minmax(0,1fr) 70px;gap:0}.nav.landing-nav .landing-logo,.landing-socials{position:static;transform:none}.landing-links{justify-content:center;gap:7px}}
 .landing-nav .landing-agents-trigger{min-height:40px;padding:0 8px;border:0;border-radius:0;background:transparent;box-shadow:none;color:#302e2b;font:300 13px Manrope,system-ui,sans-serif}
 .landing-nav .landing-agents-trigger:hover,.landing-nav .landing-agents-trigger[data-state="open"]{background:#e8e6e0;box-shadow:none}
 .landing-agents-trigger>svg{display:none}

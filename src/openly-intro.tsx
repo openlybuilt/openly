@@ -165,7 +165,7 @@ if (globeRoot) createRoot(globeRoot).render(<Globe dotColor="#68645c" radiusScal
 const navigationRoot = document.getElementById('openly-navigation-root');
 if (navigationRoot) createRoot(navigationRoot).render(
   <nav className="nav landing-nav" aria-label="Main navigation">
-    <a className="landing-logo" href={sitePaths.home} aria-label="Openly home"><img src="/assets/o-ring-white-black-outline-bold.svg" alt=""/></a>
+    <a className="landing-logo" href={sitePaths.home} aria-label="Openly home">Openly</a>
     <div className="landing-links">
     <DropdownMenu openOnHover label="Agents" align="center" triggerClassName="landing-agents-trigger" menuClassName="landing-agents-menu" items={[
       { label: 'Computer-use', onSelect: () => { window.location.href = sitePaths.computerUse; } },
