@@ -169,10 +169,8 @@ if (navigationRoot) createRoot(navigationRoot).render(
     <div className="landing-links">
     <DropdownMenu openOnHover label="Agents" align="center" triggerClassName="landing-agents-trigger" menuClassName="landing-agents-menu" items={[
       { label: 'Computer-use', onSelect: () => { window.location.href = sitePaths.computerUse; } },
-      { label: 'Research', disabled: true },
     ]}/>
     <DesignMenu triggerClassName="landing-design-trigger" menuClassName="landing-design-menu"/>
-    <button type="button" className="landing-nav-disabled" disabled>Energy</button>
     </div>
     <SocialIcons className="landing-socials"/>
   </nav>,
