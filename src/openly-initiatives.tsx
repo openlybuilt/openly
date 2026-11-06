@@ -70,18 +70,6 @@ export function Initiatives() {
           <p>Building open tools that help people accomplish more.</p>
           <a href={sitePaths.computerUse}>Explore computer-use <span aria-hidden="true">↗</span></a>
         </article>
-        <article className="initiative">
-          <div className="initiative-visual" aria-hidden="true">
-            <svg className="initiative-energy" viewBox="0 0 240 110" fill="none">
-              <path d="M4 45C50 45 62 15 120 50S190 85 236 30"/>
-              <path d="M4 55C50 55 62 25 120 60S190 95 236 40"/>
-              <path d="M4 65C50 65 62 35 120 70S190 105 236 50"/>
-            </svg>
-          </div>
-          <h3>Energy</h3>
-          <p>Exploring ways to make energy more accessible and sustainable.</p>
-          <span className="initiative-status">In development</span>
-        </article>
       </div>
     </div>
   </section>;
@@ -92,7 +80,7 @@ export function Contact() {
     <div className="contact-content">
       <div className="contact-mark" aria-hidden="true"><span/><span/><span/><span/></div>
       <h2 id="contact-title">Have something in mind?</h2>
-      <p>Have an idea, a research question, or a project that could make a difference? We’d love to hear about it.</p>
+      <p>Have an idea or a project that could make a difference? We’d love to hear about it.</p>
       <button type="button" disabled>Get in touch <span aria-hidden="true">↗</span></button>
       <small>Contact coming soon</small>
     </div>

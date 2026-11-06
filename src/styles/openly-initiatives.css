@@ -10,17 +10,13 @@
 #openly-initiatives-root[data-reveal="entered"] .initiatives-heading p{transition-delay:90ms}
 #openly-initiatives-root[data-reveal="entered"] .initiative:nth-child(1){transition-delay:150ms}
 #openly-initiatives-root[data-reveal="entered"] .initiative:nth-child(2){transition-delay:230ms}
-#openly-initiatives-root[data-reveal="entered"] .initiative:nth-child(3){transition-delay:310ms}
-.initiatives-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.initiatives-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
 .initiative{min-width:0;padding:0 clamp(22px,3vw,48px);border-left:1px solid #d9d7d1;display:flex;flex-direction:column;align-items:flex-start}
 .initiative:first-child{border-left:0;padding-left:0}.initiative:last-child{padding-right:0}
 .initiative-visual{height:230px;width:100%;display:flex;align-items:center;justify-content:center;margin-bottom:28px;color:#514f4a}
 .movable-cloud{width:min(150px,100%);padding:0;border:0;background:transparent;cursor:grab;touch-action:none;user-select:none}.movable-cloud:active{cursor:grabbing}.movable-cloud:focus-visible{outline:2px solid #514f4a;outline-offset:4px}.movable-cloud>span{display:block}.design-visual .ui-gc{background:transparent;cursor:inherit}
 .architecture-visual .ui-lyr{width:min(100%,300px);font-family:Manrope,system-ui,sans-serif}
 .architecture-visual .ui-lyr-title{font-size:clamp(10px,1vw,12px)}
-.initiative-energy{width:min(240px,100%);overflow:visible;stroke:#514f4a;stroke-width:1.2}
-.initiative-energy path{opacity:.55;stroke-dasharray:5 8;animation:initiative-flow 7s linear infinite}.initiative-energy path:nth-child(2){opacity:.9;animation-duration:5s}.initiative-energy path:nth-child(3){animation-duration:6s}
-@keyframes initiative-flow{to{stroke-dashoffset:-168}}
 .initiative h3{font-size:26px;line-height:1.2;font-weight:300;margin:0 0 16px}
 .initiative p{color:#5a5854;line-height:1.7;margin:0 0 28px;max-width:290px}
 .initiative a,.initiative-status{font-size:14px;margin-top:auto}.initiative a{color:#302e2b;text-decoration:none}.initiative a:hover{text-decoration:underline}.initiative a:focus-visible{outline:2px solid #302e2b;outline-offset:5px}.initiative a span{display:inline-block;margin-left:6px}.initiative-status{color:#77736c}
@@ -38,4 +34,4 @@
 #openly-contact-root[data-reveal="waiting"] .contact-content>*{opacity:0;filter:blur(10px);transform:translateY(20px) scale(.96);transition:none}
 #openly-contact-root[data-reveal="entered"] .contact-content>*:nth-child(2){transition-delay:70ms}#openly-contact-root[data-reveal="entered"] .contact-content>*:nth-child(3){transition-delay:150ms}#openly-contact-root[data-reveal="entered"] .contact-content>*:nth-child(4),#openly-contact-root[data-reveal="entered"] .contact-content>*:nth-child(5){transition-delay:230ms}
 @media(max-width:700px){.initiatives{padding:90px 28px}.initiatives-heading{margin-bottom:45px}.initiatives-grid{grid-template-columns:1fr}.initiative,.initiative:first-child,.initiative:last-child{border-left:0;border-top:1px solid #d9d7d1;padding:32px 0}.initiative-visual{height:230px;margin-bottom:20px}.initiative p{max-width:100%}}
-@media(prefers-reduced-motion:reduce){#openly-initiatives-root{margin-top:0;opacity:1;pointer-events:auto}#openly-initiatives-root::after{display:none}.initiatives{position:relative;top:auto}#openly-contact-root{margin-top:0;opacity:1;pointer-events:auto}#openly-initiatives-root[data-reveal] .initiatives-heading h2,#openly-initiatives-root[data-reveal] .initiatives-heading p,#openly-initiatives-root[data-reveal] .initiative,#openly-contact-root[data-reveal] .contact-content>*{opacity:1;transform:none;filter:none;transition:none}.initiative-energy path,.contact-mark span{animation:none}}
+@media(prefers-reduced-motion:reduce){#openly-initiatives-root{margin-top:0;opacity:1;pointer-events:auto}#openly-initiatives-root::after{display:none}.initiatives{position:relative;top:auto}#openly-contact-root{margin-top:0;opacity:1;pointer-events:auto}#openly-initiatives-root[data-reveal] .initiatives-heading h2,#openly-initiatives-root[data-reveal] .initiatives-heading p,#openly-initiatives-root[data-reveal] .initiative,#openly-contact-root[data-reveal] .contact-content>*{opacity:1;transform:none;filter:none;transition:none}.contact-mark span{animation:none}}
